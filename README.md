@@ -18,13 +18,30 @@
 - REST API (Kinopoisk, RAWG)
 
 ## 🔑 Настройка API
-Для корректной работы поиска необходимо указать API-ключи: Kinopoisk API и RAWG API
-Есть два варианта как это сделать:
-- Рядом с exe файлом должен быть файл keyAPI.json со слекдующим содержимым:
+
+Для корректной работы поиска необходимо указать API-ключи:
+
+- Kinopoisk API  
+- RAWG API  
+
+Есть два варианта:
+
+### 1. Через файл `keyAPI.json`
+
+Рядом с `.exe` файлом должен находиться файл `keyAPI.json` со следующим содержимым:
+
+```json
 {
   "KinopoiskApiKey": "YOUR_API_KINOPOISK",
   "RawgApiKey": "YOUR_API_RAWG"
 }
-- В классе ReadKeysAPI.cs вместо DefaultKey напишите свои API ключи
+```
+
+### 2. Через класс ReadKeysAPI.cs
+
+Вместо  DefaultKey напишите свои API ключи
+
+```csharp
 public static string Kinopoisk => _json?["KinopoiskApiKey"]?.ToString() ?? "DefaultKey";
 public static string Rawg => _json?["RawgApiKey"]?.ToString() ?? "DefaultKey";
+```
